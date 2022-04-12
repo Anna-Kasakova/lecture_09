@@ -12,13 +12,21 @@ def read_data(file_name, field):
     :param field: (str), field of a dict to return
     :return: (list, string),
     """
+
     file_path = os.path.join(cwd_path, file_name)
     with open(file_path) as data_file:
         data = json.load(data_file)
     print(data)
 
+    if field in data.keys():
+        return data[field]
+    else:
+        return None
+    #teoreticky tam to none nemusi byt protoze kdyby to tam nebylo, tak to stejne vyhodi none
+
+
 def main():
-    read_data('sequential.json', 'unordered_numbers')
+    unordered_numbers = read_data('sequential.json', 'unordered_numbers')
     pass
 
 
